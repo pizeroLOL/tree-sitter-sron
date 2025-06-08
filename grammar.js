@@ -59,7 +59,7 @@ module.exports = grammar({
       ),
 
     comment: ($) => choice(/\/\/.*/, /#.*/, /\/\*(?:.)*\*\//),
-    statement: ($) => choice($.definition_statement),
+    statement: ($) => seq(choice($.definition_statement), "\n"),
     definition_statement: ($) => seq($.value_definition, $.comment),
   },
 });
